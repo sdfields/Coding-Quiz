@@ -7,10 +7,8 @@ var choicesEl = document.getElementById("choices");
 var questionIndex = 0
 var allQuestions = [
     {
-        question:"Insert Question 1 Here",
-        choices: [
-            "Option A", "Option B", "Option C", "Option D"
-        ],
+        question:"What does CSS stand for?",
+        choices: ["Option A", "Option B", "Option C", "Option D"],
         solution: "Option B"
 
     },
@@ -44,7 +42,16 @@ function startQuiz(){
 
 function renderQuiz(){
     console.log("renderQuiz")
-    questionEl.textContent= allQuestions[questionIndex].question
+    questionEl.textContent = allQuestions[questionIndex].question
+
+    for(var i = 0; i < allQuestions[questionIndex].choices.length; i++) {
+        var option = allQuestions[questionIndex].choices[i]
+        var optionButton = document.createElement("button")
+        // addEventListener
+        optionButton.textContent = option
+        choicesEl.append(optionButton)
+    }
+
 
     // Display all choices using For loop
     // inside For loop
