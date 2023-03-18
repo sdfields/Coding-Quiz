@@ -42,44 +42,39 @@ var allQuestions = [
 ];
 
 function startQuiz() {
-  console.log("start");
   introEl.style.display = "none";
   quizEl.style.display = "block";
   renderQuiz();
 };
 
 function renderQuiz() {
-  console.log("renderQuiz");
+  // Clear Quiz Questions from previous answer
+  // For question element in HTML the text content is equal to the first question
   questionEl.textContent = allQuestions[questionIndex].question;
-
+  // For loop starts loop at index 0 and loops through the choices
   for (var i = 0; i < allQuestions[questionIndex].choices.length; i++) {
+  
     var option = allQuestions[questionIndex].choices[i];
+
     var optionButton = document.createElement("button");
+
     optionButton.textContent = option;
+
     choicesEl.append(optionButton);
   }
 };
 
 function answerQuestion() {
-  console.log('Clicked!');
+  if (event.target.textContent === allQuestions[0].solution) {
+    // Add global variable with time and do not subtract if correct
+    
+  } else {
+    // Subtract if incorrect
+    console.log('Incorrect')
+  } 
+  questionIndex = questionIndex+1
+  renderQuiz()
 };
-
-// function answerQuestion(questionIndex, option) {
-//     if (option == allQuestions[questionIndex].solution) {
-//     score++;
-//     alert('You are correct!');
-//   } else {
-//     alert("That is not correct.")
-//   }
-// };
-
-  // Display all choices using For loop
-  // inside For loop
-  // create new button element
-  // assign each choice into the button using textContent
-  // assign addEventListner
-  // append this button in choicesEl
-
 
 introButtonEl.addEventListener("click", startQuiz);
 choicesEl.addEventListener("click", answerQuestion);
