@@ -49,6 +49,7 @@ function startQuiz() {
 
 function renderQuiz() {
   // Clear Quiz Questions from previous answer
+  
   // For question element in HTML the text content is equal to the first question
   questionEl.textContent = allQuestions[questionIndex].question;
   // For loop starts loop at index 0 and loops through the choices
@@ -67,7 +68,7 @@ function renderQuiz() {
 function answerQuestion() {
   if (event.target.textContent === allQuestions[0].solution) {
     // Add global variable with time and do not subtract if correct
-    
+    console.log('Correct')
   } else {
     // Subtract if incorrect
     console.log('Incorrect')
